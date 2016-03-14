@@ -90,11 +90,57 @@ var updateEmployee = function(Employee) {
                 resolve(data);
             }
         });
-    })
+    });
+}
+
+var getEmployeeById = function(Employee) {
+    var params = {
+        TableName: "Employee",
+        Key:{
+            "Type": Employee.Type,
+            "EmpId": parseInt(Employee.EmpId)
+        }
+    };
+
+    return new Promise(function(resolve, reject) {
+        dynamodb.get(params, function(err, data) {
+            if (err) {
+                console.log(JSON.stringify(err, null, 2));
+                reject(err);
+            } else {
+                console.log(JSON.stringify(data, null, 2));
+                resolve(data);
+            }
+        });
+    });
+}
+
+var deleteEmployee = function(Employee) {
+    var params = {
+        TableName: "Employee",
+        Key:{
+            "Type": Employee.Type,
+            "EmpId": parseInt(Employee.EmpId)
+        }
+    };
+
+    return new Promise(function(resolve, reject) {
+        dynamodb.delete(params, function(err, data) {
+            if (err) {
+                console.log(JSON.stringify(err, null, 2));
+                reject(err);
+            } else {
+                console.log(JSON.stringify(data, null, 2));
+                resolve(data);
+            }
+        });
+    });
 }
 
 module.exports = {
     getAll : getAll,
     createEmployee : createEmployee,
-    updateEmployee : updateEmployee
+    updateEmployee : updateEmployee,
+    getEmployeeById: getEmployeeById,
+    deleteEmployee : deleteEmployee
 };

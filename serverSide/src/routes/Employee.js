@@ -44,7 +44,13 @@ module.exports = [
         config: {
             handler: EmployeeController.getEmployeeById,
             description: 'Get employee details from employee id',
-            notes: 'Returns employee details'
+            notes: 'Returns employee details',
+            validate: {
+                query : {
+                    username : Joi.string().alphanum().min(3).max(20).optional(),
+                    search : Joi.string().alphanum().min(3).max(100).optional()
+                }
+            }
         }
     },
     {
@@ -53,7 +59,32 @@ module.exports = [
         config: {
             handler: EmployeeController.updateEmployee,
             description: 'update employee details from employee id',
-            notes: 'updates employee details'
+            notes: 'updates employee details',
+            validate: {
+                payload : {
+                    Status : Joi.string().alphanum().min(3).max(10).optional(),
+                    Name : Joi.string().optional(),
+                    DateOfBirth: Joi.date().optional(),
+                    DateOfJoining: Joi.date().optional(),
+                    Experience : Joi.number().optional(),
+                    Designation : Joi.string().optional()
+                }
+            }
+        }
+    },
+    {
+        path: '/employees/{empId}',
+        method: 'DELETE',
+        config: {
+            handler: EmployeeController.deleteEmployeeById,
+            description: 'Deletes employee from employee id',
+            notes: 'Deletes employee details',
+            validate: {
+                query : {
+                    username : Joi.string().alphanum().min(3).max(20).optional(),
+                    search : Joi.string().alphanum().min(3).max(100).optional()
+                }
+            }
         }
     },
 ]

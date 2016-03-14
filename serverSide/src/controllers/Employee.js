@@ -78,12 +78,59 @@ var updateEmployee = function(req, reply) {
 
     if (req.params.empId){
         EmployeeObject.EmpId = req.params.empId;
+    } else {
+        reply(Boom.badData("Undefined Endpoint"));
     }
     EmployeeObject.Type = "Employee";
 
     EmployeeModel.updateEmployee(EmployeeObject)
+    .then(function(data) {
+        reply(data);
+    })
+    .error(function(e) {
+        reply(Boom.badData(err));
+    })
+    .catch(function (err) {
+        reply(Boom.badData(err));
+    });
+};
+
+var getEmployeeById = function(req, reply) {
+    var EmployeeObject = {};
+
+    if (req.params.empId){
+        EmployeeObject.EmpId = req.params.empId;
+    } else {
+        reply(Boom.badData("Undefined Endpoint"));
+    }
+    EmployeeObject.Type = "Employee";
+
+    EmployeeModel.getEmployeeById(EmployeeObject)
+    .then(function(data) {
+        reply(data);
+    })
+    .error(function(e) {
+        reply(Boom.badData(err));
+    })
+    .catch(function (err) {
+        reply(Boom.badData(err));
+    });
+
+};
+
+var deleteEmployeeById = function(req, reply) {
+    var EmployeeObject = {};
+
+    if (req.params.empId){
+        EmployeeObject.EmpId = req.params.empId;
+    } else {
+        reply(Boom.badData("Undefined Endpoint"));
+    }
+    EmployeeObject.Type = "Employee";
+
+    EmployeeModel.deleteEmployee(EmployeeObject)
         .then(function(data) {
-            reply(data);
+            reply({"success": "success"});
         })
         .error(function(e) {
             reply(Boom.badData(err));
@@ -91,15 +138,14 @@ var updateEmployee = function(req, reply) {
         .catch(function (err) {
             reply(Boom.badData(err));
         });
-};
 
-var getEmployeeById = function(req, reply) {
-    reply("inside get blog details");
-};
+
+}
 
 module.exports = {
     showAll    : showAll,
     addEmployee    : addEmployee,
     getEmployeeById: getEmployeeById,
-    updateEmployee : updateEmployee
+    updateEmployee : updateEmployee,
+    deleteEmployeeById : deleteEmployeeById
 };
