@@ -6,6 +6,7 @@ var server = new hapi.Server();
 
 var web = server.connection({
     port: process.env.SERVER_PORT,
+    host: process.env.SERVER_HOST,
     routes : {
         validate:{
             options:{
