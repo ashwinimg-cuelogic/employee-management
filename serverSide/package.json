@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/ashwinimg-cuelogic/employee-management#readme",
   "dependencies": {
-    "hapi": "^13.2.1"
+    "hapi": "^13.2.1",
+    "hapi-router": "^3.4.1"
   }
 }
