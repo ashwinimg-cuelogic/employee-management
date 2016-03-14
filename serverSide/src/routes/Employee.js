@@ -1,11 +1,11 @@
+var EmployeeController = require("./../controllers/Employee.js");
+
 module.exports = [
     {
         path: '/employees',
         method: 'GET',
         config: {
-            handler: function(req, reply) {
-                reply("Inside the get request of emp")
-            },
+            handler: EmployeeController.showAll,
             description: 'gets list of all employees',
             notes: 'lists employees'
         }
@@ -14,9 +14,7 @@ module.exports = [
         path: '/employees',
         method: 'POST',
         config: {
-            handler: function(req, reply) {
-                reply("Inside the post request of emp")
-            },
+            handler: EmployeeController.addEmployee,
             description: 'create new employee from the provided information',
             notes: 'creates new employee'
         }
@@ -25,9 +23,7 @@ module.exports = [
         path: '/employees/{empId}',
         method: 'GET',
         config: {
-            handler: function(req, reply) {
-                reply("Inside the get request of particular emp")
-            },
+            handler: EmployeeController.getEmployeeById,
             description: 'Get employee details from employee id',
             notes: 'Returns employee details'
         }
@@ -36,12 +32,9 @@ module.exports = [
         path:"/employees/{empId}",
         method : "PUT",
         config: {
-            handler: function(req, reply) {
-                reply("Inside the put request of particular emp")
-            },
+            handler: EmployeeController.updateEmployee,
             description: 'update employee details from employee id',
             notes: 'updates employee details'
         }
     },
-
 ]
