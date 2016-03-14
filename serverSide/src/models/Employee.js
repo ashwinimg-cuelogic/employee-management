@@ -43,29 +43,42 @@ var createEmployee = function(Employee) {
 
 var updateEmployee = function(Employee) {
 
+    var updateExpression =  [];
+    ExpressionAttributeNames = {};
+    ExpressionAttributeValues = {};
+
+    if (typeof Employee.Status !== "undefined") {
+        updateExpression.push("#st = :s");
+        ExpressionAttributeNames = {"#st": "Status"};
+        ExpressionAttributeValues[":s"] = Employee.Status;
+    }
+
+    if (typeof Employee.Experience !== "undefined") {
+        updateExpression.push("Experience = :e");
+        ExpressionAttributeValues[":e"] = Employee.Experience;
+    };
+
+    if (typeof Employee.DateOfBirth !== "undefined") {
+        updateExpression.push("DateOfBirth = :dob");
+        ExpressionAttributeValues[":dob"] = Employee.DateOfBirth;
+    }
+
+    if (typeof Employee.DateOfJoining !== "undefined") {
+        updateExpression.push("DateOfJoining = :doj");
+        ExpressionAttributeValues[":doj"] =  Employee.DateOfJoining;
+    }
+
     var params = {
         TableName: "Employee",
         Key:{
             "Type": Employee.Type,
-            "EmpId": Employee.EmpId
+            "EmpId": parseInt(Employee.EmpId)
         },
-        UpdateExpression: "set Status = :s, " +
-        "Experience=:e, DateOfBirth=:dob, DateOfJoining = :doj",
-        ExpressionAttributeValues:{
-            ":s":Employee.Status,
-            ":e":Employee.Experience,
-            ":dob": Employee.DateOfBirth,
-            ":doj": Employee.DateOfJoining
-        },
-        UpdateExpression: "remove info.actors[0]",
-        ConditionExpression: "Username = :Username and Email = :Email",
-        ExpressionAttributeValues:{
-            ":Username":Employee.Username
-            ":Email":Employee.Email
-        },
-        ReturnValues:"UPDATED_NEW"
+        UpdateExpression: "set "+updateExpression.join(","),
+        ExpressionAttributeNames: ExpressionAttributeNames,
+        ExpressionAttributeValues: ExpressionAttributeValues,
+        ReturnValues:"ALL_NEW"
     };
-
 
     return new Promise(function(resolve, reject) {
         dynamodb.update(params, function(err, data) {

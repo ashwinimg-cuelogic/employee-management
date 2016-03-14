@@ -17,12 +17,6 @@ var showAll = function(req, reply) {
 };
 
 function handleInput(EmployeeObject, req, reply) {
-    if (req.payload.Username){
-        EmployeeObject.Username = req.payload.Username;
-    }
-    if (req.payload.Email) {
-        EmployeeObject.Email = req.payload.Email;
-    }
     if (req.payload.Status) {
         EmployeeObject.Status = req.payload.Status;
     } else {
@@ -54,6 +48,13 @@ function handleInput(EmployeeObject, req, reply) {
 var addEmployee = function(req, reply) {
     var EmployeeObject = {};
 
+    if (req.payload.Username){
+        EmployeeObject.Username = req.payload.Username;
+    }
+    if (req.payload.Email) {
+        EmployeeObject.Email = req.payload.Email;
+    }
+
     handleInput(EmployeeObject, req, reply);
 
     EmployeeObject.EmpId  = new Date().getTime()
@@ -72,17 +73,17 @@ var addEmployee = function(req, reply) {
 };
 
 var updateEmployee = function(req, reply) {
-    var EmployeeObject =
+    var EmployeeObject = {};
     handleInput(EmployeeObject, req, reply);
 
-    if (req.payload.EmpId){
-        EmployeeObject.EmpId = req.payload.EmpId;
+    if (req.params.empId){
+        EmployeeObject.EmpId = req.params.empId;
     }
     EmployeeObject.Type = "Employee";
 
     EmployeeModel.updateEmployee(EmployeeObject)
         .then(function(data) {
-            reply({"success": "success"});
+            reply(data);
         })
         .error(function(e) {
             reply(Boom.badData(err));
@@ -91,8 +92,6 @@ var updateEmployee = function(req, reply) {
             reply(Boom.badData(err));
         });
 };
-
-}
 
 var getEmployeeById = function(req, reply) {
     reply("inside get blog details");
