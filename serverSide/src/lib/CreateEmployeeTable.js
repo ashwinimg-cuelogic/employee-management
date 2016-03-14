@@ -4,11 +4,11 @@ var params = {
     TableName : "Employee",
     KeySchema: [
         { AttributeName: "Type", KeyType: "HASH"},  //Partition key
-        { AttributeName: "EmplId", KeyType: "RANGE" }  //Sort key
+        { AttributeName: "EmpId", KeyType: "RANGE" }  //Sort key
     ],
     AttributeDefinitions: [
         { AttributeName: "Type", AttributeType: "S" },
-        { AttributeName: "EmplId", AttributeType: "N" }
+        { AttributeName: "EmpId", AttributeType: "N" }
     ],
     ProvisionedThroughput: {
         ReadCapacityUnits: 10,

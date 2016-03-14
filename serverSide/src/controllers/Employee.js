@@ -9,10 +9,9 @@ var showAll = function(req, reply) {
         reply(data);
     })
     .error(function(e) {
-        console.log("error is" + e);
-        reply(Boom.badImplementation(e));
+        reply(Boom.badData(err));
     })
-        .catch(function (err) {
+    .catch(function (err) {
         reply(Boom.badData(err));
     });
 };
@@ -22,16 +21,13 @@ var addEmployee = function(req, reply) {
     reply("inside add blog");
 };
 
-
 var getEmployeeById = function(req, reply) {
     reply("inside get blog details");
 };
 
-
 var updateEmployee = function(req, reply) {
     reply(Boom.badData('your data is bad and you should feel bad'));
 }
-
 
 module.exports = {
     showAll    : showAll,

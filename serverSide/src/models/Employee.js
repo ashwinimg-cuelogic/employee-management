@@ -4,10 +4,10 @@ var Promise = require('bluebird');
 
 
 var getAll = function(params) {
-    var params = {"test": "test"};
+    var params = { TableName: "Employee" };
 
     return new Promise(function(resolve, reject) {
-        dynamodb.listTables(params, function(err, data) {
+        dynamodb.scan(params, function(err, data) {
             if (err) {
                 console.log(JSON.stringify(err, null, 2));
                 reject(err);
