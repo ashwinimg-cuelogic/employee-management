@@ -10,7 +10,7 @@
                     views :{
                         "parent" : {
                             templateUrl: '/modules/login/templates/login.html',
-                            controller: 'loginCtrl.js'
+                            controller: 'loginCtrl'
                         }
                     }
                 })
