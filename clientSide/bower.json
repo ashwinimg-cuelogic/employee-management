@@ -1,0 +1,18 @@
+{
+  "name": "clientSide",
+  "homepage": "https://github.com/ashwinimg-cuelogic/employee-managemet",
+  "authors": [
+    "ashwinimg-cuelogic <ashwini.gawade@cuelogic.co.in>"
+  ],
+  "description": "Client Side of the Employee Management System, developed using angularjs",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "angular",
+    "employee"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "angular": "^1.5.0"
+  }
+}
