@@ -6,6 +6,6 @@ AWS.config.update({
     endpoint: process.env.AWS_DYNAMODB_END_POINT
 });
 
-var dynamoDB = new AWS.DynamoDB();
+var dynamoDB = new AWS.DynamoDB.DocumentClient()
 
 module.exports = dynamoDB;

@@ -1,4 +1,5 @@
 var EmployeeController = require("./../controllers/Employee.js");
+var Joi = require('joi');
 
 module.exports = [
     {
@@ -7,7 +8,13 @@ module.exports = [
         config: {
             handler: EmployeeController.showAll,
             description: 'gets list of all employees',
-            notes: 'lists employees'
+            notes: 'lists employees',
+            validate: {
+                query : {
+                    username : Joi.string().alphanum().min(3).max(20).optional(),
+                    search : Joi.string().alphanum().min(3).max(100).optional()
+                }
+            }
         }
     },
     {
@@ -16,7 +23,19 @@ module.exports = [
         config: {
             handler: EmployeeController.addEmployee,
             description: 'create new employee from the provided information',
-            notes: 'creates new employee'
+            notes: 'creates new employee',
+            validate: {
+                payload : {
+                    Username : Joi.string().min(3).max(100).required(),
+                    Email : Joi.string().email().required(),
+                    Status : Joi.string().alphanum().min(3).max(10).required(),
+                    Name : Joi.string().optional(),
+                    DateOfBirth: Joi.date().optional(),
+                    DateOfJoining: Joi.date().optional(),
+                    Experience : Joi.number().required(),
+                    Designation : Joi.string().optional()
+                }
+            }
         }
     },
     {
