@@ -16,9 +16,7 @@ var showAll = function(req, reply) {
     });
 };
 
-
-var addEmployee = function(req, reply) {
-    var EmployeeObject = {};
+function handleInput(EmployeeObject, req, reply) {
     if (req.payload.Username){
         EmployeeObject.Username = req.payload.Username;
     }
@@ -45,7 +43,20 @@ var addEmployee = function(req, reply) {
     if (req.payload.Experience) {
         EmployeeObject.Experience = req.payload.Experience;
     }
-    EmployeeObject.EmpId = new Date().getTime();
+    if (req.payload.DateOfBirth) {
+        EmployeeObject.DateOfBirth = req.payload.DateOfBirth;
+    }
+    if (req.payload.DateOfJoining) {
+        EmployeeObject.DateOfJoining = req.payload.DateOfJoining;
+    }
+}
+
+var addEmployee = function(req, reply) {
+    var EmployeeObject = {};
+
+    handleInput(EmployeeObject, req, reply);
+
+    EmployeeObject.EmpId  = new Date().getTime()
     EmployeeObject.Type = "Employee";
 
     EmployeeModel.createEmployee(EmployeeObject)
@@ -58,17 +69,34 @@ var addEmployee = function(req, reply) {
     .catch(function (err) {
         reply(Boom.badData(err));
     });
-
-
 };
+
+var updateEmployee = function(req, reply) {
+    var EmployeeObject =
+    handleInput(EmployeeObject, req, reply);
+
+    if (req.payload.EmpId){
+        EmployeeObject.EmpId = req.payload.EmpId;
+    }
+    EmployeeObject.Type = "Employee";
+
+    EmployeeModel.updateEmployee(EmployeeObject)
+        .then(function(data) {
+            reply({"success": "success"});
+        })
+        .error(function(e) {
+            reply(Boom.badData(err));
+        })
+        .catch(function (err) {
+            reply(Boom.badData(err));
+        });
+};
+
+}
 
 var getEmployeeById = function(req, reply) {
     reply("inside get blog details");
 };
-
-var updateEmployee = function(req, reply) {
-    reply(Boom.badData('your data is bad and you should feel bad'));
-}
 
 module.exports = {
     showAll    : showAll,
