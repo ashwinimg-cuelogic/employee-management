@@ -20,11 +20,14 @@
   },
   "homepage": "https://github.com/ashwinimg-cuelogic/employee-management#readme",
   "dependencies": {
+    "aws-sdk": "^2.2.43",
+    "bluebird": "^3.3.4",
     "boom": "^3.1.2",
     "dotenv": "^2.0.0",
     "good": "^6.6.0",
     "good-console": "^5.3.1",
     "hapi": "^13.2.1",
-    "hapi-router": "^3.4.1"
+    "hapi-router": "^3.4.1",
+    "q": "^1.4.1"
   }
 }
