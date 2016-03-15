@@ -17,22 +17,16 @@
 </head>
 <body>
     <header>
-        <nav class="cf">
-            <div class="branding"><a ng-href="#/">Employee Management System</a></div>
-            {{currentUser}}
-            <ul>
-                <li><a ng-hide="currentUser" ng-href="#/login">Login</a></li>
-                <li><a ng-show="currentUser" ng-href="#/login">Logout</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <div class="page hbox stretch">
-        <section class="vbox" ng-show="currentUser" ui-view="sidebar">
+    <div class="page-container row-fluid">
+        <section class="page-sidebar" ng-show="currentUser" ui-view="sidebar" id="main-menu">
 
         </section>
 
-        <main class="cf" ui-view="parent">
+        <main class="page-content">
+            <div class="clearfix"></div>
+            <div class="content" ui-view="parent"></div>
         </main>
     </div>
 

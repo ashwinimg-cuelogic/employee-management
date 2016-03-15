@@ -2,10 +2,17 @@ dynamodb = require('./../lib/DynamoDB');
 var Promise = require('bluebird');
 
 var getAll = function(params) {
-    var params = { TableName: "Employee" };
+    var params = {
+        TableName: "Employee",
+        KeyConditionExpression: "#t = :emp",
+        ExpressionAttributeNames: {"#t": "Type"},
+        ExpressionAttributeValues: {
+            ":emp": "Employee"
+        }
+    };
 
     return new Promise(function(resolve, reject) {
-        dynamodb.scan(params, function(err, data) {
+        dynamodb.query(params, function(err, data) {
             if (err) {
                 console.log(JSON.stringify(err, null, 2));
                 reject(err);
