@@ -19,6 +19,7 @@
     <header>
         <nav class="cf">
             <div class="branding"><a ng-href="#/">Employee Management System</a></div>
+            {{currentUser}}
             <ul>
                 <li><a ng-hide="currentUser" ng-href="#/login">Login</a></li>
                 <li><a ng-show="currentUser" ng-href="#/login">Logout</a></li>
@@ -26,11 +27,10 @@
         </nav>
     </header>
 
-    <div class="page">
-        <!--<div class="userinfo" ng-show="currentUser" ng-controller="RegistrationController">-->
-            <!--<span class="userinfo">Hi {{ currentUser.firstname}}</span>-->
-            <!--<a ng-href="#/login" ng-click="logout()">logout</a>-->
-        <!--</div>-->
+    <div class="page hbox stretch">
+        <section class="vbox" ng-show="currentUser" ui-view="sidebar">
+
+        </section>
 
         <main class="cf" ui-view="parent">
         </main>

@@ -11,6 +11,10 @@
                         "parent" : {
                             templateUrl: '/modules/employee/templates/list.html',
                             controller: 'employeeListCtrl'
+                        },
+                        "sidebar": {
+                            templateUrl: '/modules/common/templates/sidebar.html',
+                            controller: 'employeeListCtrl'
                         }
                     }
                 })

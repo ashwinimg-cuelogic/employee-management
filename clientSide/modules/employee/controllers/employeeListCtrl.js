@@ -4,13 +4,13 @@
         .controller('employeeListCtrl', employeeListCtrl);
 
     employeeListCtrl.$inject = [
-        '$scope'
+        '$scope',
+        "$rootScope"
     ];
 
-    function employeeListCtrl($scope) {
-        $scope.username = "test";
-        $scope.login = function() {
-            Authentication.login($scope.user);
-        };
+    function employeeListCtrl($scope, $rootScope) {
+
+        $rootScope.currentUser = "user";
+
     };
 })();
