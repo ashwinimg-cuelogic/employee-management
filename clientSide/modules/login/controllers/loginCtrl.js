@@ -9,7 +9,7 @@
     ];
 
     function loginCtrl($scope, Authentication) {
-       $scope.username = "test";
+        $scope.username = "test";
         $scope.login = function() {
             Authentication.login($scope.user);
         };

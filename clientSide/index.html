@@ -21,6 +21,7 @@
             <div class="branding"><a ng-href="#/">Employee Management System</a></div>
             <ul>
                 <li><a ng-hide="currentUser" ng-href="#/login">Login</a></li>
+                <li><a ng-show="currentUser" ng-href="#/login">Logout</a></li>
             </ul>
         </nav>
     </header>
@@ -46,6 +47,7 @@
 
     <!--loading all controllers -->
     <script src="./modules/login/controllers/loginCtrl.js"></script>
+    <script src="./modules/employee/controllers/employeeListCtrl.js"></script>
 
 
 

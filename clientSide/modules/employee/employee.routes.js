@@ -9,7 +9,7 @@
                     url:'/employees',
                     views :{
                         "parent" : {
-                            templateUrl: '/modules/employees/templates/list.html',
+                            templateUrl: '/modules/employee/templates/list.html',
                             controller: 'employeeListCtrl'
                         }
                     }
@@ -18,7 +18,7 @@
                     url:'/employees/create',
                     views :{
                         "parent" : {
-                            templateUrl: '/modules/employees/templates/create.html',
+                            templateUrl: '/modules/employee/templates/create.html',
                             controller: 'employeeCreateCtrl'
                         }
                     }
@@ -27,7 +27,7 @@
                     url:'/employees/:empId',
                     views :{
                         "parent" : {
-                            templateUrl: '/modules/employees/templates/info.html',
+                            templateUrl: '/modules/employee/templates/info.html',
                             controller: 'employeeInfoCtrl'
                         }
                     }
