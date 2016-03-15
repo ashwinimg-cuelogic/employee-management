@@ -4,10 +4,14 @@
     .controller('loginCtrl', loginCtrl);
 
     loginCtrl.$inject = [
-        '$scope'
+        '$scope',
+        'Authentication'
     ];
 
-    function loginCtrl($scope) {
+    function loginCtrl($scope, Authentication) {
        $scope.username = "test";
+        $scope.login = function() {
+            Authentication.login($scope.user);
+        };
     };
 })();
