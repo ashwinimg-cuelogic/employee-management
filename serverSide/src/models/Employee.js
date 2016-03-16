@@ -3,19 +3,25 @@ var Promise = require('bluebird');
 
 var getAll = function(conditions) {
     var searchString = '';
+    var rangeCondtionString = '';
     if (conditions.search) {
         searchString = "and contains(Username, :search)";
     }
+   
+    if (conditions.rangeField && conditions.start_pos && conditions.end_pos) {
+        console.log("inside");
+        rangeCondtionString = "and "+ conditions.rangeField + " between " + " :start_pos and :end_pos";
+    }
+
+
     var params = {
         TableName: "Employee",
         KeyConditionExpression: "#t = :emp",
-        FilterExpression: "#s = :s_val " + searchString + " and DateOfBirth between :start_date and :end_date ",
+        FilterExpression: "#s = :s_val " + searchString + " " + rangeCondtionString,
         ExpressionAttributeNames: {"#s": "Status", "#t": "Type"},
         ExpressionAttributeValues: {
             ":s_val": "Active",
-            ":emp": "Employee",
-            ":start_date" : "1000",
-            ":end_date" : "2030"
+            ":emp": "Employee"
         }
     };
 
@@ -25,6 +31,11 @@ var getAll = function(conditions) {
 
     if (conditions.page) {
         params.Limit =conditions.page;
+    }
+
+    if (conditions.rangeField && conditions.start_pos && conditions.end_pos) {
+        params.ExpressionAttributeValues[":start_pos"] = parseInt(conditions.start_pos);
+        params.ExpressionAttributeValues[":end_pos"] = parseInt(conditions.end_pos);
     }
 
     if (conditions.orderBy) {
@@ -49,6 +60,8 @@ var getAll = function(conditions) {
             default:
         }
     }
+
+    console.log(params);
     return new Promise(function(resolve, reject) {
         dynamodb.query(params, function(err, data) {
             if (err) {

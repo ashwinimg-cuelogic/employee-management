@@ -7,7 +7,10 @@ var showAll = function(req, reply) {
         "search" : req.query.search,
         "page": req.query.page,
         "sortBy": req.query.sortBy,
-        "orderBy": req.query.orderBy
+        "orderBy": req.query.orderBy,
+        "rangeField": req.query.rangeField,
+        "start_pos": req.query.start_pos,
+        "end_pos": req.query.end_pos
     })
     .then(function(data) {
         reply(data);

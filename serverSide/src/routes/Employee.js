@@ -14,7 +14,10 @@ module.exports = [
                     page : Joi.number().optional(),
                     search : Joi.string().alphanum().min(3).max(100).optional(),
                     sortBy : Joi.string().alphanum().optional(),
-                    orderBy : Joi.string().alphanum().optional()
+                    orderBy : Joi.string().alphanum().optional(),
+                    rangeField : Joi.string().alphanum().optional(),
+                    start_pos : Joi.number().optional(),
+                    end_pos : Joi.number().optional()
                 }
             }
         }
