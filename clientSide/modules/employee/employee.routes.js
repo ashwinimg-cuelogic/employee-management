@@ -24,6 +24,10 @@
                         "parent" : {
                             templateUrl: '/modules/employee/templates/create.html',
                             controller: 'employeeCreateCtrl'
+                        },
+                        "sidebar": {
+                            templateUrl: '/modules/common/templates/sidebar.html',
+                            controller: 'employeeListCtrl'
                         }
                     }
                 })
