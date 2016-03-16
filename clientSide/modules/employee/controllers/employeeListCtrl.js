@@ -35,7 +35,9 @@
             DTColumnDefBuilder.newColumnDef(0),
             DTColumnDefBuilder.newColumnDef(1),
             DTColumnDefBuilder.newColumnDef(2),
-            DTColumnDefBuilder.newColumnDef(3).notSortable()
+            DTColumnDefBuilder.newColumnDef(3),
+            DTColumnDefBuilder.newColumnDef(4),
+            DTColumnDefBuilder.newColumnDef(5).notSortable()
         ];
 
         $scope.addEmp = addEmp;
