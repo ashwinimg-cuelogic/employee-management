@@ -5,8 +5,10 @@ var getAll = function(params) {
     var params = {
         TableName: "Employee",
         KeyConditionExpression: "#t = :emp",
-        ExpressionAttributeNames: {"#t": "Type"},
+        FilterExpression: "#s = :s_val",
+        ExpressionAttributeNames: {"#s": "Status", "#t": "Type"},
         ExpressionAttributeValues: {
+            ":s_val": "Active",
             ":emp": "Employee"
         }
     };

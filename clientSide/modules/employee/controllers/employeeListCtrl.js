@@ -40,18 +40,17 @@
             DTColumnDefBuilder.newColumnDef(5).notSortable()
         ];
 
-        $scope.addEmp = addEmp;
-        $scope.modifyaEmp = modifyEmp;
+        $scope.modifyEmp = modifyEmp;
         $scope.removeEmp = removeEmp;
 
-        function addEmp() {
-            console.log("called");
-        }
         function modifyEmp(index) {
             console.log("called modify");
+
         }
         function removeEmp(index) {
-            console.log("called remove");
+            EmployeeService.one(index).customPUT({"Status" : "Inactive"}).then(function(employee) {
+                console.log(employee);
+            });
         }
     };
 })();
