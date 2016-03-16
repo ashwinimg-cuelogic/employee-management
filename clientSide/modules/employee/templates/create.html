@@ -21,13 +21,22 @@
                     <h4>Create a new Employee</span></h4>
                 </div>
                 <div class="grid-body ">
-                   <form name="addEmp" novalidate="" ng-submit="createEmp()">
+                   <form name="addEmp" novalidate="" ng-submit="createEmp(emp)">
                        <div class="form-group">
                            <input class="form-control" type="text" name="Username" placeholder="Username"
-                                  ng-model="emp.Username" ng-required="true">
+                                  ng-model="emp.Username" ng-required="true" ng-minlength="3">
                            <p class="error validationerror"
                               ng-show="addEmp.Username.$invalid && addEmp.Username.$touched">
-                              Username is required</p>
+                              Username is required and should be at least 3 chars long</p>
+
+                       </div>
+
+                       <div class="form-group">
+                           <input class="form-control" type="email" name="Email" placeholder="Email"
+                                  ng-model="emp.Email" ng-required="true">
+                           <p class="error validationerror"
+                              ng-show="addEmp.Email.$invalid && addEmp.Email.$touched">
+                               Email is required</p>
 
                        </div>
                        <div class="form-group">
@@ -57,14 +66,14 @@
 
                        </div>
                        <div class="form-group">
-                           <select class="form-control" ng-required="true">Status
-                               <option name="emp.Status" value="Active">Active</option>
-                               <option name="emp.Status" value="InActive">InActive</option>
+                           <select class="form-control" ng-required="true" ng-model="emp.Status">Status
+                               <option name="Status"  value="Active">Active</option>
+                               <option name="Status" value="InActive">InActive</option>
                            </select>
                        </div>
                        <div class="form-group">
                             <button type="submit" class="btn"
-                               ng-disabled="myform.$invalid">Create</button>
+                               ng-disabled="addEmp.$invalid && !addEmp.$touched">Create</button>
                        </div>
                    </form>
                 </div>

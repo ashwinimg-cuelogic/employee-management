@@ -48,8 +48,8 @@
 
         }
         function removeEmp(index) {
-            EmployeeService.one(index).customPUT({"Status" : "Inactive"}).then(function(employee) {
-                console.log(employee);
+            EmployeeService.one($scope.employees[index].EmpId).customPUT({"Status" : "Inactive"}).then(function(employee) {
+               $scope.employees.splice(index, 1);
             });
         }
     };

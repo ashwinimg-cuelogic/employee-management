@@ -5,14 +5,23 @@
 
     employeeCreateCtrl.$inject = [
         '$scope',
-        'EmployeeService'
+        'EmployeeService',
+        '$state'
     ];
 
-    function employeeCreateCtrl($scope) {
+    function employeeCreateCtrl($scope, EmployeeService, $state) {
         console.log($scope.user);
 
-        $scope.createEmp = function() {
-            EmployeeService
+        $scope.createEmp = function(emp) {
+
+            if(emp) {
+                EmployeeService
+                .post(emp)
+                .then(function(newResource) {
+                    $scope.emp = {};
+                    $state.go('employees');
+                });
+            }
         }
 
     };

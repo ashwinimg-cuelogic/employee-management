@@ -43,8 +43,8 @@
                 <td>{{ employee.DateOfJoining }}</td>
                 <td>{{ employee.Status }}</td>
                 <td>
-                    <button type="button" ng-click="modifyEmp(employee.EmpId)"  class="btn-warning"><i class="fa fa-edit"></i></button>
-                    <button type="button" ng-click="removeEmp(employee.EmpId)" class="btn-danger"><i class="fa fa-trash-o"></i></button>
+                    <button type="button" ng-click="modifyEmp($index)"  class="btn-warning"><i class="fa fa-edit"></i></button>
+                    <button type="button" ng-click="removeEmp($index)" class="btn-danger"><i class="fa fa-trash-o"></i></button>
                 </td>
             </tr>
             </tbody>
@@ -56,4 +56,3 @@
 </div>
 </div>
 </div>
-<div class="addNewRow"></div>
