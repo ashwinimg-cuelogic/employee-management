@@ -56,39 +56,37 @@
         <th style="width:10%" data-hide="phone,tablet" class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1">Status</th>
     </tr>
     </thead>
-    <tbody role="alert" aria-live="polite" aria-relevant="all">
-    <tr class="odd">
-        <td class=" ">
-            <div class="checkbox check-default">
-                <input type="checkbox" value="3" id="checkbox3">
-                <label for="checkbox3"></label>
-            </div>
-        </td>
-        <td class=" sorting_1">Angry Birds&nbsp;&nbsp;&nbsp;<span class="label label-important">ALERT!</span></td>
-        <td class=" "><span class="muted">Something goes here</span></td>
-        <td class=" "><span class="muted">$9,000</span></td>
-        <td class=" ">
-            <div class="progress">
-                <div data-percentage="70%" class="progress-bar progress-bar-danger animate-progress-bar" style="width: 70%;"></div>
-            </div>
-        </td>
-    </tr>
-    <tr class="even">
-        <td class="v-align-middle ">
-            <div class="checkbox check-default">
-                <input type="checkbox" value="3" id="checkbox2">
-                <label for="checkbox2"></label>
-            </div>
-        </td>
-        <td class="v-align-middle  sorting_1">Early Bird</td>
-        <td class="v-align-middle "><span class="muted">Redesign project template</span></td>
-        <td class=" "><span class="muted">$4,500</span></td>
-        <td class="v-align-middle ">
-            <div class="progress ">
-                <div data-percentage="80%" class="progress-bar progress-bar-success animate-progress-bar" style="width: 80%;"></div>
-            </div>
-        </td>
-    </tr>
+    <tbody role="alert" aria-live="polite" aria-relevant="all" ng-repeat="employee in employees">
+
+        <tr id="{{employee.EmpId}}">
+            <td class=" ">
+                <div class="checkbox check-default">
+                    <input type="checkbox" value="3" id="checkbox3">
+                    <label for="checkbox3"></label>
+                </div>
+            </td>
+            <td class=" sorting_1">{{employee.Username | Capitalize}}</td>
+            <td class=" "><span class="muted">{{employee.DateOfBirth}}</span></td>
+            <td class=" "><span class="muted">{{employee.Experience}}</span></td>
+            <td class=" "><span class="muted">{{employee.Status}}</span></td>
+
+        </tr>
+    <!--<tr class="even">-->
+        <!--<td class="v-align-middle ">-->
+            <!--<div class="checkbox check-default">-->
+                <!--<input type="checkbox" value="3" id="checkbox2">-->
+                <!--<label for="checkbox2"></label>-->
+            <!--</div>-->
+        <!--</td>-->
+        <!--<td class="v-align-middle  sorting_1">Early Bird</td>-->
+        <!--<td class="v-align-middle "><span class="muted">Redesign project template</span></td>-->
+        <!--<td class=" "><span class="muted">$4,500</span></td>-->
+        <!--<td class="v-align-middle ">-->
+            <!--<div class="progress ">-->
+                <!--<div data-percentage="80%" class="progress-bar progress-bar-success animate-progress-bar" style="width: 80%;"></div>-->
+            <!--</div>-->
+        <!--</td>-->
+    <!--</tr>-->
     </tbody>
 </table>
 <div class="row">
