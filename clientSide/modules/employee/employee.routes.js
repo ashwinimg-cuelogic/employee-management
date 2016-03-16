@@ -37,6 +37,10 @@
                         "parent" : {
                             templateUrl: '/modules/employee/templates/info.html',
                             controller: 'employeeInfoCtrl'
+                        },
+                        "sidebar": {
+                            templateUrl: '/modules/common/templates/sidebar.html',
+                            controller: 'employeeListCtrl'
                         }
                     }
                 })

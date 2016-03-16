@@ -8,10 +8,11 @@
         '$rootScope',
         'EmployeeService',
         'DTOptionsBuilder',
-        'DTColumnDefBuilder'
+        'DTColumnDefBuilder',
+        '$state'
     ];
 
-    function employeeListCtrl($scope, $rootScope, EmployeeService, DTOptionsBuilder, DTColumnDefBuilder) {
+    function employeeListCtrl($scope, $rootScope, EmployeeService, DTOptionsBuilder, DTColumnDefBuilder, $state) {
 
         $rootScope.currentUser = "user";
 
@@ -44,8 +45,8 @@
         $scope.removeEmp = removeEmp;
 
         function modifyEmp(index) {
-            console.log("called modify");
-
+            empId = $scope.employees[index].EmpId;
+            $state.go("employees_details", {'empId':empId });
         }
         function removeEmp(index) {
             EmployeeService.one($scope.employees[index].EmpId).customPUT({"Status" : "Inactive"}).then(function(employee) {

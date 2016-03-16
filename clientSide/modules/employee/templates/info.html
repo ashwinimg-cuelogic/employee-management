@@ -1,0 +1,79 @@
+<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+<div id="portlet-config" class="modal hide">
+    <div class="modal-header">
+        <button data-dismiss="modal" class="close" type="button"></button>
+        <h3>Widget Settings</h3>
+    </div>
+    <div class="modal-body"> Widget settings form goes here </div>
+</div>
+<div class="clearfix"></div>
+<div class="content">
+    <ul class="breadcrumb">
+        <li>
+            <p ng-sreg="employees">Employees</p>
+        </li>
+        <li><a href="#" class="active">Update</a></li>
+    </ul>
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="grid simple ">
+                <div class="grid-title">
+                    <h4>Update Employee</span></h4>
+                </div>
+                <div class="grid-body ">
+                    <form name="editEmp" novalidate="" ng-submit="editEmp(emp)">
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="Username" placeholder="Username"
+                                   ng-model="emp.Username" ng-required="true" ng-minlength="3">
+                            <p class="error validationerror"
+                               ng-show="editEmp.Username.$invalid && editEmp.Username.$touched">
+                                Username is required and should be at least 3 chars long</p>
+
+                        </div>
+
+                        <div class="form-group">
+                            <input class="form-control" type="email" name="Email" placeholder="Email" value="{{emp.Email}}"
+                                    ng-disabled="true">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="Experience" placeholder="Experience in Years"
+                                   ng-model="emp.Experience" ng-required="true">
+                            <p class="error validationerror"
+                               ng-show="editEmp.Experience.$invalid && editEmp.Experience.$touched">
+                                Experience is required</p>
+
+                        </div>
+
+                        <div class="form-group">
+                            <input class="form-control" type="date" name="DateOfBirth" placeholder="yy/mm/dd"
+                                   ng-model="emp.DateOfBirth">
+                            <p class="error validationerror"
+                               ng-show="editEmp.DateOfBirth.$invalid && editEmp.DateOfBirth.$touched">
+                                Date Of Birth is required</p>
+
+                        </div>
+
+                        <div class="form-group">
+                            <input class="form-control" type="date" name="DateOfJoining" placeholder="yy/mm/dd"
+                                   ng-model="emp.DateOfJoining">
+                            <p class="error validationerror"
+                               ng-show="editEmp.DateOfJoining.$invalid && editEmp.DateOfJoining.$touched">
+                                Date Of Joining is required</p>
+
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" ng-required="true" ng-model="emp.Status">Status
+                                <option name="Status"  value="Active">Active</option>
+                                <option name="Status" value="InActive">InActive</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn"
+                                    ng-disabled="editEmp.$invalid && !editEmp.$touched">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

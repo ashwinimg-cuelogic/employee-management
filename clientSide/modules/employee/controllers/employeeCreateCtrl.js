@@ -13,7 +13,6 @@
         console.log($scope.user);
 
         $scope.createEmp = function(emp) {
-
             if(emp) {
                 EmployeeService
                 .post(emp)
