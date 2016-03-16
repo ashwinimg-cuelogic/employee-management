@@ -24,6 +24,29 @@ var getAll = function(conditions) {
     if (conditions.page) {
         params.Limit =conditions.page;
     }
+
+    if (conditions.orderBy) {
+        var orderBy = conditions.orderBy.toLowerCase() =="asc" ? true : false
+        params.ScanIndexForward = orderBy;
+    }
+
+    if (conditions.sortBy) {
+        switch(conditions.sortBy) {
+            case "Email" :
+                params.IndexName = "EmployeeAndEmailIndex";
+                break;
+            case "DateOfJoining":
+                params.IndexName = "EmployeeAndDateOfJoiningIndex";
+                break;
+            case "DateOfBirth":
+                params.IndexName = "EmployeeAndDateOfBirthIndex";
+                break;
+            case "Experience":
+                params.IndexName = "EmployeeAndExperienceIndex";
+                break;
+            default:
+        }
+    }
     return new Promise(function(resolve, reject) {
         dynamodb.query(params, function(err, data) {
             if (err) {
@@ -47,8 +70,6 @@ var createEmployee = function(Employee) {
         "and attribute_not_exists(Username) and attribute_not_exists(Email)",
         ExpressionAttributeNames: {"#t": "Type"}
     };
-
-    console.log(params);
 
     return new Promise(function(resolve, reject) {
         dynamodb.put(params, function(err, data) {
