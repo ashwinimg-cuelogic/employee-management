@@ -9,11 +9,13 @@ var getAll = function(conditions) {
     var params = {
         TableName: "Employee",
         KeyConditionExpression: "#t = :emp",
-        FilterExpression: "#s = :s_val " + searchString,
+        FilterExpression: "#s = :s_val " + searchString + " and DateOfBirth between :start_date and :end_date ",
         ExpressionAttributeNames: {"#s": "Status", "#t": "Type"},
         ExpressionAttributeValues: {
             ":s_val": "Active",
-            ":emp": "Employee"
+            ":emp": "Employee",
+            ":start_date" : "1000",
+            ":end_date" : "2030"
         }
     };
 

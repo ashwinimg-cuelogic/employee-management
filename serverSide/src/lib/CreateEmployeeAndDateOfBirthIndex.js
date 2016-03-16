@@ -4,7 +4,7 @@ var params = {
     TableName: "Employee",
     AttributeDefinitions:[
         {AttributeName: "Type", AttributeType: "S"},
-        {AttributeName: "DateOfBirth", AttributeType: "S"}
+        {AttributeName: "DateOfBirth", AttributeType: "N"}
     ],
     GlobalSecondaryIndexUpdates: [
         {

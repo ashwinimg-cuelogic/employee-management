@@ -32,8 +32,8 @@ module.exports = [
                     Email : Joi.string().email().required(),
                     Status : Joi.string().alphanum().min(3).max(10).required(),
                     Name : Joi.string().optional(),
-                    DateOfBirth: Joi.date().optional(),
-                    DateOfJoining: Joi.date().optional(),
+                    DateOfBirth: Joi.number().optional(),
+                    DateOfJoining: Joi.number().optional(),
                     Experience : Joi.number().required(),
                     Designation : Joi.string().optional()
                 }
@@ -66,8 +66,8 @@ module.exports = [
                 payload : {
                     Status : Joi.string().alphanum().min(3).max(10).optional(),
                     Name : Joi.string().optional(),
-                    DateOfBirth: Joi.date().optional(),
-                    DateOfJoining: Joi.date().optional(),
+                    DateOfBirth: Joi.number().optional(),
+                    DateOfJoining: Joi.number().optional(),
                     Experience : Joi.number().optional(),
                     Designation : Joi.string().optional()
                 }
