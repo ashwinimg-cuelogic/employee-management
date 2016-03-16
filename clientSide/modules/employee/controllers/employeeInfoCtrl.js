@@ -19,6 +19,8 @@
             .get()
             .then(function(employee) {
                 $scope.emp = employee.Item ;
+                $scope.emp.DateOfBirth = employee.DateOfBirth;
+                $scope.emp.DateOfJoining = employee.DateOfJoining;
                 console.log($scope.emp);
             })
             .catch(function(err){

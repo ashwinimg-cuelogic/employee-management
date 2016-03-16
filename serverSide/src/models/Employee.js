@@ -37,6 +37,8 @@ var createEmployee = function(Employee) {
         ExpressionAttributeNames: {"#t": "Type"}
     };
 
+    console.log(params);
+
     return new Promise(function(resolve, reject) {
         dynamodb.put(params, function(err, data) {
             if (err) {

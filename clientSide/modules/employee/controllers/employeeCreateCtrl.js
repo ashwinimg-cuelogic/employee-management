@@ -13,6 +13,8 @@
         console.log($scope.user);
 
         $scope.createEmp = function(emp) {
+            console.log(emp.DateOfBirth);
+            console.log(new Date(emp.DateOfBirth));
             if(emp) {
                 EmployeeService
                 .post(emp)

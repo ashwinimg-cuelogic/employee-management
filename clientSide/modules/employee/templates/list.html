@@ -10,9 +10,9 @@
 <div class="content">
 <ul class="breadcrumb">
     <li>
-        <p ng-sreg="employees">Employees</p>
+        <a ui-sref="employees">Employees</a>
     </li>
-    <li><a href="#" class="active">list</a> </li>
+    <li><a href="javascript:void(0);" class="active">list</a> </li>
 </ul>
 <div class="row-fluid">
 <div class="span12">
@@ -39,8 +39,8 @@
             <tr ng-repeat="employee in employees">
                 <td>{{ employee.Username }}</td>
                 <td>{{ employee.Experience }}</td>
-                <td>{{ employee.DateOfBirth }}</td>
-                <td>{{ employee.DateOfJoining }}</td>
+                <td>{{ employee.DateOfBirth | date: 'yyyy-MM-dd' }}</td>
+                <td>{{ employee.DateOfJoining | date: 'yyyy-MM-dd' }}</td>
                 <td>{{ employee.Status }}</td>
                 <td>
                     <button type="button" ng-click="modifyEmp($index)"  class="btn-warning"><i class="fa fa-edit"></i></button>

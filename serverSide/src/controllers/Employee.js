@@ -32,17 +32,16 @@ function handleInput(EmployeeObject, req, reply) {
         EmployeeObject.DateOfBirth = req.payload.DateOfBirth;
     }
     if (req.payload.DateOfJoining) {
-        EmployeeObject.DateOfJoining = req.payload.DateOfJoining;
+        EmployeeObject.DateOfJoining = req.payload.DateOfJoining.toString();
     }
     if (req.payload.Experience) {
         EmployeeObject.Experience = req.payload.Experience;
     }
     if (req.payload.DateOfBirth) {
-        EmployeeObject.DateOfBirth = req.payload.DateOfBirth;
+        EmployeeObject.DateOfBirth = req.payload.DateOfBirth.toString();
     }
-    if (req.payload.DateOfJoining) {
-        EmployeeObject.DateOfJoining = req.payload.DateOfJoining;
-    }
+
+    console.log(JSON.stringify(EmployeeObject));
 }
 
 var addEmployee = function(req, reply) {
