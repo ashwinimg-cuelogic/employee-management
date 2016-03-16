@@ -23,85 +23,57 @@
 </div>
 <div class="grid-body ">
 <div id="example_wrapper" class="dataTables_wrapper form-inline" role="grid">
-<div class="row">
-    <div class="col-md-6">
-        <div id="example_length" class="dataTables_length">
-            <label>
-                <select size="1" name="example_length" aria-controls="example" class="select2-wrapper span12 select2-offscreen" tabindex="-1">
-                    <option value="10" selected="selected">10</option>
-                    <option value="25">25</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
-                </select>
-            </label>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="dataTables_filter" id="example_filter"><label>Search: <input type="text" aria-controls="example" class="input-medium"></label></div>
-    </div>
-</div>
-<table class="table table-hover table-condensed dataTable" id="example" aria-describedby="example_info">
-    <thead>
-    <tr role="row">
-        <th style="width:1%" class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label="
-                              ">
-            <div class="checkbox check-default" style="margin-right:auto;margin-left:auto;">
-                <input type="checkbox" value="1" id="checkbox1">
-                <label for="checkbox1"></label>
-            </div>
-        </th>
-        <th style="width:10%" class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" >Employee Name</th>
-        <th style="width:22%" data-hide="phone,tablet" class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" >Date of Birt</th>
-        <th style="width:6%" class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" >Experience</th>
-        <th style="width:10%" data-hide="phone,tablet" class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1">Status</th>
-    </tr>
-    </thead>
-    <tbody role="alert" aria-live="polite" aria-relevant="all" ng-repeat="employee in employees">
-
-        <tr id="{{employee.EmpId}}">
-            <td class=" ">
-                <div class="checkbox check-default">
-                    <input type="checkbox" value="3" id="checkbox3">
-                    <label for="checkbox3"></label>
-                </div>
-            </td>
-            <td class=" sorting_1">{{employee.Username | Capitalize}}</td>
-            <td class=" "><span class="muted">{{employee.DateOfBirth}}</span></td>
-            <td class=" "><span class="muted">{{employee.Experience}}</span></td>
-            <td class=" "><span class="muted">{{employee.Status}}</span></td>
-
-        </tr>
-    <!--<tr class="even">-->
-        <!--<td class="v-align-middle ">-->
-            <!--<div class="checkbox check-default">-->
-                <!--<input type="checkbox" value="3" id="checkbox2">-->
-                <!--<label for="checkbox2"></label>-->
-            <!--</div>-->
-        <!--</td>-->
-        <!--<td class="v-align-middle  sorting_1">Early Bird</td>-->
-        <!--<td class="v-align-middle "><span class="muted">Redesign project template</span></td>-->
-        <!--<td class=" "><span class="muted">$4,500</span></td>-->
-        <!--<td class="v-align-middle ">-->
-            <!--<div class="progress ">-->
-                <!--<div data-percentage="80%" class="progress-bar progress-bar-success animate-progress-bar" style="width: 80%;"></div>-->
-            <!--</div>-->
-        <!--</td>-->
-    <!--</tr>-->
-    </tbody>
-</table>
-<div class="row">
-    <div class="col-md-12">
-        <div class="dataTables_paginate paging_bootstrap pagination">
-            <ul>
-                <li class="prev disabled"><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li class="next"><a href="#"><i class="fa fa-chevron-right"></i></a></li>
-            </ul>
-        </div>
-        <div class="dataTables_info" id="example_info">Showing <b>1 to 10</b> of 14 entries</div>
-    </div>
-</div>
+    <form class="form-inline" ng-submit="addEmp()">
+        <table datatable="ng" dt-options="dtOptions" dt-column-defs="dtColumnDefs" class="row-border hover">
+            <thead>
+            <tr>
+                <th>
+                    <div class="form-group">
+                        <label>
+                            <input class="form-control" type="number" name="Username" ng-model="person2Add.Username" value="">
+                        </label>
+                    </div>
+                </th>
+                <th>
+                    <div class="form-group">
+                        <label>
+                            <input type="text" class="form-control" name="Experience" ng-model="person2Add.Experience" value="">
+                        </label>
+                    </div>
+                </th>
+                <th>
+                    <div class="form-group">
+                        <label>
+                            <input type="text" class="form-control" name="Status" ng-model="person2Add.Status" value="">
+                        </label>
+                    </div>
+                </th>
+                <th>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i></button>
+                    </div>
+                </th>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <th>Experience</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="employee in employees">
+                <td>{{ employee.Username }}</td>
+                <td>{{ employee.Experience }}</td>
+                <td>{{ employee.Status }}</td>
+                <td>
+                    <button type="button" ng-click="modifyEmp(employee.EmpId)" style="padding:1px 4px" class="btn btn-warning"><i class="fa fa-edit"></i></button>
+                    <button type="button" ng-click="removeEmp(employee.EmpId)" style="padding:1px 4px" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
 </div>
 </div>
 </div>
