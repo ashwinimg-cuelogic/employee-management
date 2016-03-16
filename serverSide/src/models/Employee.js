@@ -1,11 +1,15 @@
 dynamodb = require('./../lib/DynamoDB');
 var Promise = require('bluebird');
 
-var getAll = function(params) {
+var getAll = function(conditions) {
+    var searchString = '';
+    if (conditions.search) {
+        searchString = "and contains(Username, :search)";
+    }
     var params = {
         TableName: "Employee",
         KeyConditionExpression: "#t = :emp",
-        FilterExpression: "#s = :s_val",
+        FilterExpression: "#s = :s_val " + searchString,
         ExpressionAttributeNames: {"#s": "Status", "#t": "Type"},
         ExpressionAttributeValues: {
             ":s_val": "Active",
@@ -13,6 +17,13 @@ var getAll = function(params) {
         }
     };
 
+    if (searchString != '') {
+        params.ExpressionAttributeValues[":search"] = conditions.search;
+    }
+
+    if (conditions.page) {
+        params.Limit =conditions.page;
+    }
     return new Promise(function(resolve, reject) {
         dynamodb.query(params, function(err, data) {
             if (err) {

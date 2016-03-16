@@ -3,8 +3,12 @@ var Promise = require('bluebird');
 var EmployeeModel =  Promise.promisifyAll(require("./../models/Employee"));
 
 var showAll = function(req, reply) {
-
-    EmployeeModel.getAll({})
+    EmployeeModel.getAll({
+        "search" : req.query.search,
+        "page": req.query.page,
+        "sortBy": req.query.sortBy,
+        "orderBy": req.query.orderBy
+    })
     .then(function(data) {
         reply(data);
     })
