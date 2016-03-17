@@ -1,7 +1,7 @@
 dynamodb = require('./DynamoDB');
 
 var params = {
-    TableName: "Employee",
+    TableName: "EmployeeTest",
     AttributeDefinitions:[
         {AttributeName: "Type", AttributeType: "S"},
         {AttributeName: "Experience", AttributeType: "N"}

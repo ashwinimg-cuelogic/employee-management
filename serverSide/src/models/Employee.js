@@ -14,7 +14,7 @@ var getAll = function(conditions) {
 
 
     var params = {
-        TableName: "Employee",
+        TableName: "EmployeeTest",
         KeyConditionExpression: "#t = :emp",
         FilterExpression: "#s = :s_val " + searchString + " " + rangeCondtionString,
         ExpressionAttributeNames: {"#s": "Status", "#t": "Type"},
@@ -78,7 +78,7 @@ var getAll = function(conditions) {
 var createEmployee = function(Employee) {
 
     var params = {
-        TableName: "Employee",
+        TableName: "EmployeeTest",
         Item : Employee,
         ConditionExpression: "attribute_not_exists(#t) and attribute_not_exists(EmpId) " +
         "and attribute_not_exists(Username) and attribute_not_exists(Email)",
@@ -126,7 +126,7 @@ var updateEmployee = function(Employee) {
     }
 
     var params = {
-        TableName: "Employee",
+        TableName: "EmployeeTest",
         Key:{
             "Type": Employee.Type,
             "EmpId": parseInt(Employee.EmpId)
@@ -152,7 +152,7 @@ var updateEmployee = function(Employee) {
 
 var getEmployeeById = function(Employee) {
     var params = {
-        TableName: "Employee",
+        TableName: "EmployeeTest",
         Key:{
             "Type": Employee.Type,
             "EmpId": parseInt(Employee.EmpId)
@@ -174,7 +174,7 @@ var getEmployeeById = function(Employee) {
 
 var deleteEmployee = function(Employee) {
     var params = {
-        TableName: "Employee",
+        TableName: "EmployeeTest",
         Key:{
             "Type": Employee.Type,
             "EmpId": parseInt(Employee.EmpId)
