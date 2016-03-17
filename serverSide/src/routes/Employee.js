@@ -12,7 +12,7 @@ module.exports = [
             validate: {
                 query : {
                     page : Joi.number().optional(),
-                    search : Joi.string().alphanum().min(3).max(100).optional(),
+                    search : Joi.string().alphanum().min(1).max(100).optional(),
                     sortBy : Joi.string().alphanum().optional(),
                     orderBy : Joi.string().alphanum().optional(),
                     rangeField : Joi.string().alphanum().optional(),
