@@ -5,7 +5,7 @@ var getAll = function(conditions) {
     var searchString = '';
     var rangeCondtionString = '';
     if (conditions.search) {
-        searchString = "and contains(Username, :search)";
+        searchString = "and (contains(Username, :search) or contains (Email, :search)) ";
     }
 
     if (conditions.rangeField && conditions.start_pos && conditions.end_pos) {
