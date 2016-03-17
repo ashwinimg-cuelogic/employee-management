@@ -21,6 +21,7 @@
                 .post(emp)
                 .then(function(newResource) {
                     $scope.emp = {};
+                    emp ={};
                     $state.go('employees');
                 });
             }

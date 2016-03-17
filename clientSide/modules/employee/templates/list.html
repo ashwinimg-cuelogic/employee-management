@@ -24,7 +24,7 @@
 <div class="grid-body ">
 <div id="example_wrapper" class="dataTables_wrapper form-inline" role="grid">
     <div class="dataTables_filter">
-        <span>Sort By:
+        <span class="p-l-10">Sort By:
             <select ng-model="sortBy">
                 <option value="Email">Email</option>
                 <option value="Experience">Experience</option>
@@ -32,27 +32,37 @@
                 <option value="DateOfJoining">Date Of Joining</option>
             </select>
         </span>
-         <span>Order By:
+         <span class="p-l-10">Order By:
             <select ng-model="orderBy">
                 <option value="asc">Ascending</option>
                 <option value="desc">Descending</option>
             </select>
         </span>
-        <span>Range Field
+        <span class="p-l-10">Range Field
             <select ng-model="rangeField">
                 <option value="Experience">Experience</option>
                 <option value="DateOfBirth">Date Of Birth</option>
                 <option value="DateOfJoining">Date Of Joining</option>
             </select>
-            <input type="text" ng-show="rangeField =='Experience'" ng-model="start_pos" placeholder="Start From">
-            <input type="text" ng-show="rangeField =='Experience'" ng-model="end_pos" placeholder="End To">
-            <input type="date" ng-hide="rangeField =='Experience'" ng-model="start_pos" placeholder="Start From">
-            <input type="date" ng-hide="rangeField =='Experience'" ng-model="end_pos" placeholder="End To">
+            <span class="p-l-10">
+                <span> Start From</span>
+                <input type="text" ng-show="rangeField =='Experience'" ng-model="start_pos" placeholder="Start From">
+                <input type="date" ng-hide="rangeField =='Experience'" ng-model="start_pos" placeholder="Start From">
+            </span>
+
+            <span class="p-l-10">
+                <span> End To</span>
+                <input type="text" ng-show="rangeField =='Experience'" ng-model="end_pos" placeholder="End To">
+                <input type="date" ng-hide="rangeField =='Experience'" ng-model="end_pos" placeholder="End To">
+            </span>
+
         </span>
-        <span>Search:<input type="text" ng-model="search" class="" placeholder="" aria-controls="DataTables_Table_0"></span>
-        <input type="button" class="btn" ng-click="update()" value="submit">
+        <span class="p-l-10">Search:<input type="text" ng-model="search" class="" placeholder="" aria-controls="DataTables_Table_0"></span>
+        <input type="button" class="btn p-l-5 p-b-5" ng-click="update()" value="submit">
     </div>
     <div class="cf"></div>
+    <div class="m-b-40"></div>
+    <div></div>
     <table dt-options="dtOptions" dt-column-defs="dtColumnDefs" class="row-border hover">
         <thead>
         <tr>
