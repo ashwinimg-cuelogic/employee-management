@@ -6,7 +6,7 @@ var params = {
         {AttributeName: "Type", AttributeType: "S"},
         {AttributeName: "DateOfBirth", AttributeType: "N"}
     ],
-    GlobalSecondaryIndexUpdates: [
+    LocalSecondaryIndexUpdates: [
         {
             Create: {
                 IndexName: "EmployeeAndDateOfBirthIndex",
