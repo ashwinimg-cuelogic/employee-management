@@ -21,10 +21,10 @@
                     <h4>Update Employee</span></h4>
                 </div>
                 <div class="grid-body ">
-                    <form name="editEmp" novalidate="" ng-submit="editEmp(emp)">
+                    <form name="editEmp" novalidate="" ng-submit="editEmployee(emp)">
                         <div class="form-group">
                             <input class="form-control" type="text" name="Username" placeholder="Username"
-                                   ng-model="emp.Username" ng-required="true" ng-minlength="3">
+                                   ng-disabled="true" ng-minlength="3" value="{{emp.Username}}">
                             <p class="error validationerror"
                                ng-show="editEmp.Username.$invalid && editEmp.Username.$touched">
                                 Username is required and should be at least 3 chars long</p>
@@ -36,6 +36,7 @@
                                     ng-disabled="true">
                         </div>
                         <div class="form-group">
+                            <label>Experience</label>
                             <input class="form-control" type="text" name="Experience" placeholder="Experience in Years"
                                    ng-model="emp.Experience" ng-required="true">
                             <p class="error validationerror"
@@ -45,6 +46,7 @@
                         </div>
 
                         <div class="form-group">
+                            <label>Date Of Birth</label>
                             <input class="form-control" type="date" name="DateOfBirth" placeholder="yy/mm/dd"
                                    ng-model="emp.DateOfBirth">
                             <p class="error validationerror"
@@ -54,6 +56,7 @@
                         </div>
 
                         <div class="form-group">
+                            <label>Date Of Joining</label>
                             <input class="form-control" type="date" name="DateOfJoining" placeholder="yy/mm/dd"
                                    ng-model="emp.DateOfJoining">
                             <p class="error validationerror"
@@ -62,6 +65,7 @@
 
                         </div>
                         <div class="form-group">
+                            <label>Status</label>
                             <select class="form-control" ng-required="true" ng-model="emp.Status">Status
                                 <option name="Status"  value="Active">Active</option>
                                 <option name="Status" value="InActive">InActive</option>
@@ -69,7 +73,7 @@
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn"
-                                    ng-disabled="editEmp.$invalid && !editEmp.$touched">Create</button>
+                                    ng-disabled="editEmp.$invalid && !editEmp.$touched">Update</button>
                         </div>
                     </form>
                 </div>

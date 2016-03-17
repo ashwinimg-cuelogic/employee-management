@@ -19,22 +19,23 @@
             .get()
             .then(function(employee) {
                 $scope.emp = employee.Item ;
-                $scope.emp.DateOfBirth = employee.DateOfBirth;
-                $scope.emp.DateOfJoining = employee.DateOfJoining;
-                console.log($scope.emp);
+                $scope.emp.DateOfBirth = new Date($scope.emp.DateOfBirth);
+                $scope.emp.DateOfJoining = new Date($scope.emp.DateOfJoining);
             })
             .catch(function(err){
                 console.log(err);
             });
         }
 
-        $scope.editEmp = function(employee) {
+        $scope.editEmployee = function(employee) {
+            employee.DateOfBirth =new Date(employee.DateOfBirth).getTime();
+            employee.DateOfJoining =new Date(employee.DateOfJoining).getTime();
+
             EmployeeService.one(employee.EmpId).customPUT({
                 "Status" :employee.Status,
-                "DateOfBirth" :employee.DateOfBirth,
-                "DateOfJoining" :employee.DateOfJoining,
-                "Experience" :employee.Experience,
-                "Username" : employee.Username
+                "DateOfBirth" :parseInt(employee.DateOfBirth),
+                "DateOfJoining" :parseInt(employee.DateOfJoining),
+                "Experience" :employee.Experience
             }).then(function(employee) {
                 $state.go("employees");
             });
