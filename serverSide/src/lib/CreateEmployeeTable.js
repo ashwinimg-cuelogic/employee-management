@@ -15,9 +15,6 @@ var params = {
             ],
             Projection: {
                 "ProjectionType": "ALL"
-            },
-            ProvisionedThroughput: {
-                "ReadCapacityUnits": 1,"WriteCapacityUnits": 1
             }
         },
         {
@@ -28,9 +25,6 @@ var params = {
             ],
             Projection: {
                 "ProjectionType": "ALL"
-            },
-            ProvisionedThroughput: {
-                "ReadCapacityUnits": 1,"WriteCapacityUnits": 1
             }
         },
         {
@@ -41,9 +35,6 @@ var params = {
             ],
             Projection: {
                 "ProjectionType": "ALL"
-            },
-            ProvisionedThroughput: {
-                "ReadCapacityUnits": 1,"WriteCapacityUnits": 1
             }
         },
         {
@@ -54,9 +45,6 @@ var params = {
             ],
             Projection: {
                 "ProjectionType": "ALL"
-            },
-            ProvisionedThroughput: {
-                "ReadCapacityUnits": 1,"WriteCapacityUnits": 1
             }
         }
     ],
