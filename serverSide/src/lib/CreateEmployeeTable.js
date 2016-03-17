@@ -6,6 +6,14 @@ var params = {
         { AttributeName: "Type", KeyType: "HASH"},  //Partition key
         { AttributeName: "EmpId", KeyType: "RANGE" }  //Sort key
     ],
+    AttributeDefinitions: [
+        { AttributeName: "Type", AttributeType: "S" },
+        { AttributeName: "EmpId", AttributeType: "N" },
+        { AttributeName: "DateOfBirth", AttributeType: "N" },
+        {AttributeName: "DateOfJoining", AttributeType: "N"},
+        {AttributeName: "Experience", AttributeType: "N"},
+        {AttributeName: "Email", AttributeType: "S"}
+    ],
     LocalSecondaryIndexes:[
         {
             IndexName: "EmployeeAndEmailIndex",
@@ -47,10 +55,6 @@ var params = {
                 "ProjectionType": "ALL"
             }
         }
-    ],
-    AttributeDefinitions: [
-        { AttributeName: "Type", AttributeType: "S" },
-        { AttributeName: "EmpId", AttributeType: "N" }
     ],
     ProvisionedThroughput: {
         ReadCapacityUnits: 10,
