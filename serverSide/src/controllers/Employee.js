@@ -39,13 +39,13 @@ function handleInput(EmployeeObject, req, reply) {
         EmployeeObject.DateOfBirth = req.payload.DateOfBirth;
     }
     if (req.payload.DateOfJoining) {
-        EmployeeObject.DateOfJoining = req.payload.DateOfJoining.toString();
+        EmployeeObject.DateOfJoining = parseInt(req.payload.DateOfJoining);
     }
     if (req.payload.Experience) {
         EmployeeObject.Experience = req.payload.Experience;
     }
     if (req.payload.DateOfBirth) {
-        EmployeeObject.DateOfBirth = req.payload.DateOfBirth.toString();
+        EmployeeObject.DateOfBirth = parseInt(req.payload.DateOfBirth);
     }
 
     console.log(JSON.stringify(EmployeeObject));

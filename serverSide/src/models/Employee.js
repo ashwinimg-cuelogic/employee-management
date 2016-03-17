@@ -7,9 +7,8 @@ var getAll = function(conditions) {
     if (conditions.search) {
         searchString = "and contains(Username, :search)";
     }
-   
+
     if (conditions.rangeField && conditions.start_pos && conditions.end_pos) {
-        console.log("inside");
         rangeCondtionString = "and "+ conditions.rangeField + " between " + " :start_pos and :end_pos";
     }
 
@@ -118,12 +117,12 @@ var updateEmployee = function(Employee) {
 
     if (typeof Employee.DateOfBirth !== "undefined") {
         updateExpression.push("DateOfBirth = :dob");
-        ExpressionAttributeValues[":dob"] = Employee.DateOfBirth;
+        ExpressionAttributeValues[":dob"] = parseInt(Employee.DateOfBirth);
     }
 
     if (typeof Employee.DateOfJoining !== "undefined") {
         updateExpression.push("DateOfJoining = :doj");
-        ExpressionAttributeValues[":doj"] =  Employee.DateOfJoining;
+        ExpressionAttributeValues[":doj"] =  parseInt(Employee.DateOfJoining);
     }
 
     var params = {
