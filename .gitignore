@@ -1,5 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
 clientSide/bower_components/
 clientSide/node_modules/
+clientSide/coverage/
 serverSide/node_modules/
 serverSide/.env
