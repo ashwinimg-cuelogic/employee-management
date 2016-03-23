@@ -1,6 +1,6 @@
 describe("employee controller tests", function() {
 
-    var scope, employeeCreateCtrl, $q, EmployeeServiceMock, state, $state;
+    var scope, employeeCreateCtrl, $q, EmployeeServiceMock, $state;
 
     beforeEach(module("app"));
 
