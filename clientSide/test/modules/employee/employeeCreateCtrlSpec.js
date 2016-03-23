@@ -1,11 +1,12 @@
 describe("employee controller tests", function() {
 
-    var scope, employeeCreateCtrl, $q, EmployeeServiceMock;
+    var scope, employeeCreateCtrl, $q, EmployeeServiceMock, state, $state;
 
     beforeEach(module("app"));
 
-    beforeEach(inject(function(_$q_) {
+    beforeEach(inject(function(_$q_, _$state_) {
         $q = _$q_;
+        $state = _$state_;
     }));
 
     // define the mock EmployeeService
@@ -33,7 +34,8 @@ describe("employee controller tests", function() {
                 "employeeCreateCtrl",
                 {
                     $scope : scope,
-                    EmployeeService: EmployeeServiceMock
+                    EmployeeService: EmployeeServiceMock,
+                    $state: $state
                 }
             );
         })
@@ -59,6 +61,5 @@ describe("employee controller tests", function() {
         scope.createEmp();
         expect(EmployeeServiceMock.post).not.toHaveBeenCalled();
     });
-
 
 });
