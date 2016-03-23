@@ -10,13 +10,12 @@
     ];
 
     function employeeCreateCtrl($scope, EmployeeService, $state) {
-        console.log($scope.user);
 
         $scope.createEmp = function(emp) {
-
-            emp.DateOfBirth =new Date(emp.DateOfBirth).getTime();
-            emp.DateOfJoining =new Date(emp.DateOfJoining).getTime();
             if(emp) {
+                emp.DateOfBirth =new Date(emp.DateOfBirth).getTime();
+                emp.DateOfJoining =new Date(emp.DateOfJoining).getTime();
+
                 EmployeeService
                 .post(emp)
                 .then(function(newResource) {
