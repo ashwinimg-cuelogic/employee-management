@@ -21,10 +21,8 @@
                 $scope.emp = employee.Item ;
                 $scope.emp.DateOfBirth = new Date($scope.emp.DateOfBirth);
                 $scope.emp.DateOfJoining = new Date($scope.emp.DateOfJoining);
-            })
-            .catch(function(err){
-                console.log(err);
             });
+
         }
 
         $scope.editEmployee = function(employee) {
