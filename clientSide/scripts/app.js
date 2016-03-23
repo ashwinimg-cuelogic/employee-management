@@ -1,4 +1,4 @@
-angular.module('app', ['ui.router', 'restangular', 'datatables'])
+angular.module('app', ['ui.router', 'restangular'])
 
 //setting data for restangular
 .config(["RestangularProvider", function(RestangularProvider){

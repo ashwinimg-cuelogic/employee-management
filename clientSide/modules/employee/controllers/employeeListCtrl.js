@@ -7,12 +7,10 @@
         '$scope',
         '$rootScope',
         'EmployeeService',
-        'DTOptionsBuilder',
-        'DTColumnDefBuilder',
         '$state'
     ];
 
-    function employeeListCtrl($scope, $rootScope, EmployeeService, DTOptionsBuilder, DTColumnDefBuilder, $state) {
+    function employeeListCtrl($scope, $rootScope, EmployeeService, $state) {
 
         $rootScope.currentUser = "user";
 
