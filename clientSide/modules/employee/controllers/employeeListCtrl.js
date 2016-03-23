@@ -21,17 +21,21 @@
 
         $scope.modifyEmp = modifyEmp;
         $scope.removeEmp = removeEmp;
-        $scope.update = update()
+        $scope.update = update;
 
         function modifyEmp(index) {
-            empId = $scope.employees[index].EmpId;
-            $state.go("employees_details", {'empId':empId });
+            if ($scope.employees.hasOwnProperty(index)) {
+                empId = $scope.employees[index].EmpId;
+                $state.go("employees_details", {'empId':empId });
+            }
         }
 
         function removeEmp(index) {
-            EmployeeService.one($scope.employees[index].EmpId).customPUT({"Status" : "Inactive"}).then(function(employee) {
-               $scope.employees.splice(index, 1);
-            });
+            if ($scope.employees.hasOwnProperty(index)) {
+                EmployeeService.one($scope.employees[index].EmpId).customPUT({"Status": "Inactive"}).then(function (employee) {
+                    $scope.employees.splice(index, 1);
+                });
+            }
         }
 
         function update() {
