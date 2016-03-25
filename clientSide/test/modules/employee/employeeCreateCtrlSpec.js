@@ -25,8 +25,6 @@ describe("employee controller tests", function() {
         spyOn(EmployeeServiceMock, "post").and.callThrough();
     });
 
-
-
     beforeEach(
         inject(function($rootScope, $controller) {
             scope = $rootScope.$new();
