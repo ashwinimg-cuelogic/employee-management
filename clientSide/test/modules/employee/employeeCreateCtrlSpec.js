@@ -61,3 +61,32 @@ describe("employee controller tests", function() {
     });
 
 });
+
+xdescribe("a spec which wont be executed", function() {
+    var foo;
+    beforeEach(function(){
+        foo = 0;
+        foo +=1
+    });
+
+    it("is just a function, so it can contain any code", function() {
+        expect(foo).toEqual(1);
+    });
+
+    it("is just a function, so it can contain any code", function() {
+        expect(true).toEqual(true);
+    });
+});
+
+
+describe("pending specs, which do not run, but their results will show up in the results as pending", function(){
+    xit("can be declared as xit", function(){
+        expect(true).toEqual(true);
+    });
+
+    it("can be declared by calling 'pending' in the spec body", function() {
+        expect(true).toBe(false);
+        pending();
+    });
+});
+
